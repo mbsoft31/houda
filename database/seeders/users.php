@@ -5,7 +5,7 @@ $permissions = [
     "department" => ["create", "edit", "delete"],
     "speciality" => ["create", "edit", "delete"],
     "student" => ["create", "edit", "delete"],
-    "theme" => ["create", "edit", "delete"],
+    "theme" => ["create", "accept", "refuse", "choose", "edit", "delete"],
 ];
 
 $roles = [
@@ -16,11 +16,14 @@ $roles = [
     ],
     "department-chief" => [
         "student" => ["edit"],
+        "theme" => ["accept", "refuse"],
     ],
     "teacher" => [
         "theme" => ["create", "edit", "delete"],
     ],
-    "student" => [],
+    "student" => [
+        "theme" => ["choose"],
+    ],
 ];
 
 $etudiants = [
@@ -169,6 +172,7 @@ $enseignants = [
         'speciality' => 'génie logiciel',
         'grade' => 'Professeur',
         'phone' => '0664646464',
+        "departments" => [1],
         "department_id" => 1,
     ],
     [
@@ -181,6 +185,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'Professeur',
         'speciality' => 'Intellegence Artificiele',
+        "departments" => [1],
         "department_id" => 1,
     ],
 
@@ -194,6 +199,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'MCA',
         'speciality' => 'Intellegence Artificiele',
+        "departments" => [1],
         "department_id" => 1,
     ],
     [
@@ -206,6 +212,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'MCA',
         'speciality' => 'Intellegence Artificiele',
+        "departments" => [1],
         "department_id" => 1,
     ],
     [
@@ -218,6 +225,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'MCB',
         'speciality' => 'Intellegence Artificiele',
+        "departments" => [1],
         "department_id" => 1,
     ],
     [
@@ -230,6 +238,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'MCB',
         'speciality' => 'génie logiciel',
+        "departments" => [1],
         "department_id" => 1,
     ],
     [
@@ -242,6 +251,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'MCB',
         'speciality' => 'génie logiciel',
+        "departments" => [1],
         "department_id" => 1,
     ],
     [
@@ -254,6 +264,7 @@ $enseignants = [
         'address' => 'souk ahras',
         'grade' => 'MCB',
         'speciality' => 'génie logiciel',
+        "departments" => [1],
         "department_id" => 1,
     ]
 ];

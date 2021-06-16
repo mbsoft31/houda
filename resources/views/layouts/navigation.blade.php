@@ -21,7 +21,11 @@
                     @endrole
 
                     @role("department-chief")
-                        @include("layouts.department-chief-nav")
+                    @include("layouts.department-chief-nav")
+                    @endrole
+
+                    @role("teacher")
+                    @include("layouts.teacher-nav")
                     @endrole
 
                 </div>

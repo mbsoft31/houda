@@ -16,6 +16,11 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function themes()
+    {
+        return $this->belongsToMany(Theme::class);
+    }
+
     public function speciality()
     {
         return $this->belongsTo(Speciality::class);
@@ -24,5 +29,16 @@ class Student extends Model
     public function getNameAttribute()
     {
         return $this->user->name;
+    }
+
+    public function hasTheme($theme)
+    {
+        return $this->themes()->where("themes.id", $theme->id)->count() > 0;
+    }
+
+    public function isThemeAvailable($theme)
+    {
+        $speciality = $this->speciality;
+        return ($speciality->themes()->where("themes.id", $theme->id)->exists());
     }
 }

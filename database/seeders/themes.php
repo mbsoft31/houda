@@ -14,7 +14,7 @@ return [
     [
         'title' => "point d'assistance et d'information",
         'diploma' => "master",
-        'speciality_id' => 3,
+        'speciality_id' => 2,
         'teacher' => "imad@mail.com",
         'active' => "1",
         'objective' => "jqshgdkjfhqg q ksgjd lfqkjflqKJHSDLK",
@@ -32,7 +32,7 @@ return [
     [
         'title' => "Etudier la maintenabilite de logiciel a partir de son historique de l'evolution",
         'diploma' => "master",
-        'speciality_id' => 3,
+        'speciality_id' => 6,
         'teacher' => "hanene@mail.com",
         'enterprise' => null,
         'active' => "1",
@@ -42,7 +42,7 @@ return [
     [
         'title' => "gestion de reservation d'hotels en ligne",
         'diploma' => "master",
-        'speciality_id' => 3,
+        'speciality_id' => 2,
         'teacher' => "youcef@mail.com",
         'active' => "1",
         'objective' => "jqshgdkjfhqg q ksgjd lfqkjflqKJHSDLK",

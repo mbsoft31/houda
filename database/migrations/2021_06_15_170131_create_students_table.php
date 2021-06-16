@@ -24,14 +24,6 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger("theme_id")->nullable();
             $table->timestamps();
         });
-
-        Schema::create('student_theme', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger("order");
-            $table->unsignedBigInteger("user_id");
-            $table->unsignedBigInteger("theme_id");
-            $table->timestamps();
-        });
     }
 
     /**
@@ -42,6 +34,5 @@ class CreateStudentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('students');
-        Schema::dropIfExists('student_theme');
     }
 }

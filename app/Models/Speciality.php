@@ -26,5 +26,8 @@ class Speciality extends Model
         return $this->hasMany(Student::class);
     }
 
-
+    public function themes()
+    {
+        return $this->hasMany(Theme::class);
+    }
 }

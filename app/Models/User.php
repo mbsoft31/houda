@@ -52,4 +52,11 @@ class User extends Authenticatable
     }
 
 
+    public function student()
+    {
+        if ( $this->hasRole("student") )
+            return $this->hasOne(Student::class);
+
+        return null;
+    }
 }

@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
 
             $department = Department::find($teacher_item["department_id"]);
 
-            $teacher->departments()->attach($department);
+            $teacher->departments()->attach($teacher_item["departments"]);
 
             $user->assignRole("teacher");
         }

@@ -33,6 +33,18 @@ $faculties = [
                         "diploma" => "master",
                     ]
                 ]
+            ],
+            1 =>[
+                'name'      => 'Département de Génie Mecanique',
+                'address'  => 'Université de Souk Ahras Souk Ahras , 41000 - Algérie',
+                'phone'      => '030952935',
+                'chief'      => 3,
+                'specialites' => [
+                    0 => [
+                        'name' => 'Génie Mecanique',
+                        "diploma" => "licence",
+                    ],
+                ]
             ]
         ]
     ]

@@ -20,4 +20,22 @@ class Theme extends Model
     {
         return $this->belongsTo(Speciality::class);
     }
+
+    public function accept()
+    {
+        if ($this->status == "active") return;
+
+        $this->status = "active";
+
+        return $this->save();
+    }
+
+    public function refuse()
+    {
+        if ($this->status == "refused") return;
+
+        $this->status = "refused";
+
+        return $this->save();
+    }
 }
