@@ -38,7 +38,7 @@ class ThemeController extends Controller
         $user = Auth::user();
         $student = $user->student;
         $speciality = $student->speciality;
-        $themes = $speciality->themes;
+        $themes = $speciality->themes()->where("themes.status", "active")->get();
 
         return view("theme.index", [
             "themes" => $themes,
@@ -99,11 +99,12 @@ class ThemeController extends Controller
         $departments = Auth::user()->teacher->departments;
         $specialities = collect();
         foreach ($departments as $department) {
+            $data = $this->getSpecialities($department);
             if ($specialities->isEmpty()) {
-                $specialities = $this->getSpecialities($department);
+                $specialities = $data;
             }else{
-                if ($this->getSpecialities($department) != null && ! $this->getSpecialities($department)->isEmpty()) {
-                    $specialities = $specialities->concat($this->getSpecialities($department));
+                if ( $data != null && ! $data->isEmpty()) {
+                    $specialities = $specialities->concat($data);
                 }
             }
         }
@@ -114,13 +115,11 @@ class ThemeController extends Controller
     private function getSpecialities(Department $department)
     {
         $specialities = collect();
-
+        $data = $department->specialities;
         if ($specialities->isEmpty()) {
-            $specialities = $department->specialities;
-        }else{
-            if ($department->specialities != null && !$department->specialities->isEmpty()) {
-                $specialities = $specialities->concat($department->specialities);
-            }
+            $specialities = $data;
+        }else if ( $data != null && ! $data->isEmpty()) {
+            $specialities = $specialities->concat($data);
         }
 
         return $specialities;

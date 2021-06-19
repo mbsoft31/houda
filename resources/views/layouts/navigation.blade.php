@@ -28,6 +28,10 @@
                     @include("layouts.teacher-nav")
                     @endrole
 
+                    @role("student")
+                    @include("layouts.student-nav")
+                    @endrole
+
                 </div>
             </div>
 

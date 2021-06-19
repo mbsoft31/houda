@@ -1,4 +1,4 @@
-@props(["route" => "create", "faculties" => [], "department" => null])
+@props(["route" => "create", "teachers" => [], "faculties" => [], "department" => null])
 
 @php
 
@@ -25,6 +25,19 @@ else
             <x-form.error for="faculty_id" />
         </div>
         <div>
+            <x-form.label for="user_id" :value="__('Department Chief')" />
+            <select name="user_id" id="user_id" class="block w-full rounded-md border-gray-100">
+                @foreach($teachers as $teacher)
+                    @if($route == "edit")
+                        <option value="{{$teacher->user->id}}" @if($teacher->user->id == $department->user->id) selected @endif>{{$teacher->name}}</option>
+                    @else
+                        <option value="{{$teacher->user->id}}">{{$teacher->name}}</option>
+                    @endif
+                @endforeach
+            </select>
+            <x-form.error for="user_id" />
+        </div>
+        <div>
             <x-form.label for="name" :value="__('Name')" />
             @if($route == "edit")
                 <x-form.text id="name" value="{{$department->name}}"/>
@@ -35,7 +48,11 @@ else
         </div>
         <div>
             <x-form.label for="address" :value="__('Address')" />
-            <x-form.area id="address">@isset($department){!! $department->address !!}@endisset</x-form.area>
+            @if($route == "edit")
+                <x-form.area id="address">{!! $department->address !!}</x-form.area>
+            @else
+                <x-form.area id="address">{!! old("address") !!}</x-form.area>
+            @endif
             <x-form.error for="address" />
         </div>
         <div>

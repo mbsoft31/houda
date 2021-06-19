@@ -14,6 +14,7 @@
         <th scope="col">{{ __("Address") }}</th>
         <th scope="col">{{ __("Phone") }}</th>
         <th scope="col">{{ __("Faculty") }}</th>
+        <th scope="col">{{ __("Department chief") }}</th>
         @if($actions)
             <th scope="col">{{ __("Actions") }}</th>
         @endif
@@ -29,6 +30,11 @@
             <td class="text-sm">{{ $department->address }}</td>
             <td class="text-sm">{{ $department->phone }}</td>
             <td class="text-sm">{{ $department->faculty->name }}</td>
+            @if($department->chief)
+            <td class="text-sm">{{ $department->chief->name }}</td>
+            @else
+            <td class="text-sm">{{ __("Not specified") }}</td>
+            @endif
             @if($actions)
                 <td>
                     <div class="inline-flex justify-end items-center space-x-2">

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\Faculty;
+use App\Models\Teacher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class DepartmentController extends Controller
 {
@@ -34,6 +36,7 @@ class DepartmentController extends Controller
     {
         return view("department.create", [
             "faculties" => Faculty::all(),
+            "teachers" => Teacher::all(),
         ]);
     }
 
@@ -45,12 +48,17 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $this->validate($request, [
-            "faculty" => ["required", "integer", "exists:faculties,id"],
-            "name" => ["required", "string", "min:3", "unique:departments,name"],
-            "address" => ["nullable", "string"],
-            "phone" => ["nullable", "string", "min:9", "max:12"],
-        ]);
+        try {
+            $validated = $this->validate($request, [
+                "faculty_id" => ["required", "integer", "exists:faculties,id"],
+                "user_id" => ["required", "integer", "exists:users,id"],
+                "name" => ["required", "string", "min:3", "unique:departments,name"],
+                "address" => ["nullable", "string"],
+                "phone" => ["nullable", "string", "min:9", "max:12"],
+            ]);
+        } catch (ValidationException $e) {
+            dd($e->errors());
+        }
 
         Department::create($validated);
 

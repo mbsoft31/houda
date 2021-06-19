@@ -15,7 +15,12 @@
                         </div>
                     @endif
                     <div class="mt-4 py-6 border-t">
-                        <x-theme.table :themes="$themes" />
+                        @if(request()->routeIs("theme.available"))
+                            <x-theme.table :themes="$themes" :actions="false"/>
+                        @else
+                            <x-theme.table :themes="$themes"/>
+                        @endif
+
                     </div>
                 </div>
             </div>
